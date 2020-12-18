@@ -98,7 +98,7 @@ impl SpotifyAccessory {
     /// status changes while the app is open, the status is not
     /// reflected correctly.
     pub fn check_on(&self) {
-        self.service.get_characteristic("On").get_value();
+        self.service.get_characteristic("Mute").get_value();
     }
 
     /// Setup up Homebridge characteristics.
@@ -107,7 +107,7 @@ impl SpotifyAccessory {
         let set_on = self.set_on();
 
         self.service
-            .get_characteristic("On")
+            .get_characteristic("Mute")
             .on("set", set_on.as_ref().unchecked_ref())
             .on("get", get_on.as_ref().unchecked_ref());
 
@@ -115,7 +115,7 @@ impl SpotifyAccessory {
         let set_volume = self.set_volume();
 
         self.service
-            .get_characteristic("Brightness")
+            .get_characteristic("Volume")
             .on("set", set_volume.as_ref().unchecked_ref())
             .on("get", get_volume.as_ref().unchecked_ref());
 
