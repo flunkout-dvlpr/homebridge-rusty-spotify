@@ -12,7 +12,7 @@ module.exports = function(homebridge) {
 
   createSwitch = function(name) {
     let newSwitch = new Service.Speaker(name);
-    // we'll use brightness to control the volume
+    // we'll use volume from speaker to control the volume 
     newSwitch.addCharacteristic(Characteristic.Volume);
     return newSwitch;
   }
